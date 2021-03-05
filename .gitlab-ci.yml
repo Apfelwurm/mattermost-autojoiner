@@ -1,0 +1,20 @@
+stages:
+  - build
+
+variables:
+  DOCKER_DRIVER: overlay2
+  CONTAINER_IMAGE: registry.gitlab.com/$CI_PROJECT_PATH
+
+build_image:
+  stage: build
+  image: docker:git
+  services:
+    - docker:18-dind
+  script:
+    - docker pull $CONTAINER_IMAGE:$CI_COMMIT_REF_NAME || true
+    - docker login -u $CI_BUILD_USER -p $CI_BUILD_TOKEN registry.gitlab.com
+    - docker build --cache-from $CONTAINER_IMAGE:latest -t $CONTAINER_IMAGE -t $CONTAINER_IMAGE:$CI_COMMIT_REF_NAME .
+    - docker push $CONTAINER_IMAGE:$CI_COMMIT_REF_NAME
+    - if [ "${CI_COMMIT_REF_NAME}" = master ] ; then docker push $CONTAINER_IMAGE:latest ; fi
+
+
