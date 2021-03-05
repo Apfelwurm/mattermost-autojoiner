@@ -15,4 +15,3 @@ build_image:
     - docker pull registry.gitlab.com/apfelwurm/mattermost-autojoiner:latest || true
     - docker build --cache-from registry.gitlab.com/apfelwurm/mattermost-autojoiner:latest -t registry.gitlab.com/apfelwurm/mattermost-autojoiner:latest .
     - docker push registry.gitlab.com/apfelwurm/mattermost-autojoiner:latest
-    - if [ "${CI_COMMIT_REF_NAME}" = master ] ; then docker push registry.gitlab.com/apfelwurm/mattermost-autojoiner:latest ; fi

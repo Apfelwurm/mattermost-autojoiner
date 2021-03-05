@@ -35,6 +35,7 @@ version: "3.4"
 services:
   app:
     image: registry.gitlab.com/apfelwurm/mattermost-autojoiner:latest
+    restart: unless-stopped
     environment:
       # App Config
       - MM_INSTANCE="https://yourmminstance"
