@@ -3,7 +3,7 @@ stages:
 
 variables:
   DOCKER_DRIVER: overlay2
-  CONTAINER_IMAGE: registry.gitlab.com/$CI_PROJECT_PATH
+  CONTAINER_IMAGE: $CI_PROJECT_PATH
 
 build_image:
   stage: build
