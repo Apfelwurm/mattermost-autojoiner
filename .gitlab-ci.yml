@@ -11,10 +11,8 @@ build_image:
   services:
     - docker:18-dind
   script:
-    - docker pull $CONTAINER_IMAGE:$CI_COMMIT_REF_NAME || true
     - docker login -u $CI_BUILD_USER -p $CI_BUILD_TOKEN registry.gitlab.com
-    - docker build --cache-from $CONTAINER_IMAGE:latest -t $CONTAINER_IMAGE -t $CONTAINER_IMAGE:$CI_COMMIT_REF_NAME .
-    - docker push $CONTAINER_IMAGE:$CI_COMMIT_REF_NAME
-    - if [ "${CI_COMMIT_REF_NAME}" = master ] ; then docker push $CONTAINER_IMAGE:latest ; fi
-
-
+    - docker pull registry.gitlab.com/apfelwurm/mattermost-autojoiner:latest || true
+    - docker build --cache-from registry.gitlab.com/apfelwurm/mattermost-autojoiner:latest -t registry.gitlab.com/apfelwurm/mattermost-autojoiner:latest .
+    - docker push registry.gitlab.com/apfelwurm/mattermost-autojoiner:latest
+    - if [ "${CI_COMMIT_REF_NAME}" = master ] ; then docker push registry.gitlab.com/apfelwurm/mattermost-autojoiner:latest ; fi
