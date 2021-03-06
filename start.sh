@@ -18,7 +18,7 @@ do
 
     # printf '%s\n' "${users[@]}"
 
-    echo "$(date) autojoin starting"
+    echo "$(date) autojoin starting with $SLEEPTIMERSEC seconds command delay "
     for i in "${teams[@]}"
     do
     : 
@@ -51,7 +51,7 @@ do
                     do
                         :
                         if [ ! -z $u ]; then
-                            echo "iterate user $u in channel $c run command:"
+                            echo "$(date) iterate user $u in channel $c run command:"
                             echo "mmctl channel users add $i:$c $u"
                             mmctl channel users add $i:$c $u
                             sleep $SLEEPTIMERSEC
@@ -65,6 +65,6 @@ do
 
 
     done
-
+echo "$(date) autojoin finished, waiting $($RUNOVERSEC / 60) minutes / $RUNOVERSEC seconds ..."
 sleep $RUNOVERSEC
 done
