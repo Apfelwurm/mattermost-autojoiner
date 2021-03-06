@@ -65,6 +65,6 @@ do
 
 
     done
-echo "$(date) autojoin finished, waiting $($RUNOVERSEC / 60) minutes / $RUNOVERSEC seconds ..."
+echo "$(date) autojoin finished, waiting $(expr $RUNOVERSEC / 60) minutes / $RUNOVERSEC seconds ..."
 sleep $RUNOVERSEC
 done
