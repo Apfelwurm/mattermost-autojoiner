@@ -38,9 +38,9 @@ services:
     restart: unless-stopped
     environment:
       # App Config
-      - MM_INSTANCE="https://yourmminstance"
-      - MM_ACESS_TOKEN="ACCESSTOKEN"
-      - MM_SERVERNAME="SERVERNAME"
+      - MM_INSTANCE=https://yourmminstance
+      - MM_ACESS_TOKEN=ACCESSTOKEN
+      - MM_SERVERNAME=SERVERNAME
     container_name: mattermost_autojoiner
 
 ```
