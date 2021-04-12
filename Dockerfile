@@ -9,7 +9,7 @@ ENV SLEEPTIMERSEC=3
 ENV RUNOVERSEC=1800
 
 RUN apt-get update -y && apt-get dist-upgrade -y && apt-get install jq -y
-RUN go get -u github.com/mattermost/mmctl@release-5.34
+RUN go get -u github.com/mattermost/mmctl@release-5.32
 
 WORKDIR /mmscripts
 
