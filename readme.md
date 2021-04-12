@@ -13,8 +13,6 @@ This docker container joins all users in your mattermost instance to all teams a
 
 ### Docker
 
-This method is intended to be run as just a image with your own database. Persistant storage is required for the storage/ directory.
-
 you can run the autojoiner with (for detailed environment variables see below):
 ```
 docker run --rm -it \
